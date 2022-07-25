@@ -1,36 +1,41 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const cards = [
+  {
+    alt: "GitHub profile",
+    href: "https://github.com/tgmoore",
+    src: "/assets/github.png",
+    title: "GitHub"
+  },
+  {
+    alt: "LinkedIn profile",
+    href: "https://www.linkedin.com/in/tyler-moore-15688916a/",
+    src: "/assets/in.png",
+    title: "LinkedIn"
+  },
+  {
+    alt: "Google Scholar profile",
+    href: "https://scholar.google.com/citations?user=SrtnzQEAAAAJ",
+    src: "/assets/scholar.svg",
+    title: "Google Scholar"
+  }
+]
 ---
+<!-- Include other components with a `client:` directive to hydrate:
+<ReactPokemonComponent client:visible /> -->
 
 <Layout title="tgmoore">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
 		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Chat"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
+			{cards.map(data =>
+        <Card
+          alt={data.alt}
+          href={data.href}
+          src={data.src}
+          title={data.title}
+        />)}
 		</ul>
 	</main>
 </Layout>

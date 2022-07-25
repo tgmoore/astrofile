@@ -1,23 +1,19 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
 	href: string;
+  src: string;
+  alt: string;
+  title: string;
 }
-const { href, title, body } = Astro.props;
+const { alt, href, src, title } = Astro.props;
 ---
 
 <li class="link-card">
 	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
+    <img src={src} alt={alt} title={title} role="link" tabindex="0" />
 	</a>
 </li>
+
 <style>
 	:root {
 		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
